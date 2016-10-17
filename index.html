@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <title>Angular JS Shop Cart</title>
+ 
+    <!-- Bootstrap core CSS -->
+    <script src="angular.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   <script src="app.js"></script>
+</head>
+ 
+<body ng-app='onlineStore'>
+    <!--p style="text-align:center;"><img " src="images/main1.png" style="height:50; width:50;"></p-->
+    <h1 style="text-align:center;"> Welcome to Our Store, hope you find all usefull stuff here. </h1>
+    <div class='container' style="width:100%;" ng-controller="StoreController as store">
+        <div class="row">
+            <div id="left-penal" >
+                <div >
+                    <div class = 'show-item' ng-repeat="item in store.products">
+                        <div class='item'>
+                            <div style="width: 60%; float:left">
+                                <img class='imageinlist' ng-src="{{item.image}}">
+                                <em class='pull-right'> <b>Price: {{item.price | currency}}</b></em>
+                                <h3 class='itemname'>{{item.name}}</h3>
+                                <h4>Item Description: {{item.description}}</h4>
+                            </div>
+
+                            <div style="width: 40%; float:right; padding-top:50px;">
+                                <label><b>Quantity : </b><input type="number" min="1" value='1' placeholder="1" ng-model="qty" style="width:50px;height:20px;" /></label>
+                                <br> 
+                                <button type="button" ng-click="store.addItem(item,qty)" style="background-color:lightgreen; width:50px;height:30px; border-radius:5px;"><b>Add</b></button>
+                            
+                            </div>
+                            <br style="clear:both;"/>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+   
+            <div id="right-penal">
+                <h2 style="text-align:center; color:orange">Your Shopping Cart</h1>
+
+                <h4 style="text-align:center; color:blue ">Total amount: {{store.total}}</h4>
+                <button type="button" style="background-color:lightgreen; width:200px;height:30px; border-radius:5px; position:relative;left:30%;margin-bottom:20px;"><b>Proceed to Checkout</b></button>
+            </div>
+            <br style="clear:both;"/>
+        </div>
+    </div>
+</body>
+ 
+</html>
